@@ -6,6 +6,7 @@ const auth = createSlice({
     accountId: null,
     isFetching: false,
     requestToken: null,
+    accessToken: null,
     errorMessage: "",
   },
   reducers: {
@@ -13,8 +14,16 @@ const auth = createSlice({
       state.errorMessage = "";
       state.isFetching = true;
     },
+    fetchingAccessToken: state => {
+      state.errorMessage = "";
+      state.isFetching = true;
+    },
     receivedRequestToken: (state, action) => {
       state.requestToken = action.payload.request_token;
+      state.isFetching = false;
+    },
+    receivedAccessToken: (state, action) => {
+      state.accessToken = action.payload.access_token;
       state.isFetching = false;
     }
 
