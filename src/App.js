@@ -1,20 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Auth } from './containers'
-import './App.css';
+import React from "react";
+import { Auth, NavBar } from "./components";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import TypoGraphy from "@material-ui/core/Typography";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Auth />
-      </header>
+const App = () => (
+  <div>
+    <AppBar color="primary" position="static">
+      <Toolbar>
+        <TypoGraphy variant="title" color="inherit">
+          My TV shows
+        </TypoGraphy>
+        <NavBar />
+      </Toolbar>
+    </AppBar>
+    <div>
+      <Auth />
     </div>
-  );
-}
+  </div>
+);
 
 export default App;

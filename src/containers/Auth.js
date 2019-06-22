@@ -1,30 +1,6 @@
-import React from "react";
 import { connect } from "react-redux";
 import { auth } from "../reduxStore";
 
-const AuthView = props => (
-  <div>
-    {props.isFetching && <p>is Fetching</p>}
-    {props.requestToken ? (
-      <button
-        onClick={e => {
-          props.fetchingAccessToken();
-        }}
-      >
-        {" "}
-        Create Access Token
-      </button>
-    ) : (
-      <button
-        onClick={e => {
-          props.fetchingRequestToken();
-        }}
-      >
-        fetching Request Token
-      </button>
-    )}
-  </div>
-);
 
 const mapStateToProps = state => {
   return {
@@ -39,7 +15,7 @@ const mapDispatchToProps = {
   fetchingAccessToken: auth.actions.fetchingAccessToken
 };
 
-export const Auth = connect(
+export const WithAuth = connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthView);
+)

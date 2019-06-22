@@ -20,6 +20,7 @@ const auth = createSlice({
     },
     receivedRequestToken: (state, action) => {
       state.requestToken = action.payload.request_token;
+      console.log(state.isFetching, ' debug here is Fetching');
       state.isFetching = false;
     },
     receivedAccessToken: (state, action) => {
