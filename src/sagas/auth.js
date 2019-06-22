@@ -1,18 +1,18 @@
 import api from "../lib/api.js";
 import auth from "../reduxStore/auth.js";
 import config from "../config.js";
+import Cookies from "universal-cookie";
 
-import { takeEvery, put, select } from "redux-saga/effects";
+import { takeEvery, put } from "redux-saga/effects";
 
 function* getRequestToken() {
   try {
     const response = yield api.post(
       "https://api.themoviedb.org/4/auth/request_token",
       {
-        redirect_to: config.APP_URL
+        redirect_to: config.APP_URL + '/approve/'
       }
     );
-    //const products = response.products;
     yield put(auth.actions.receivedRequestToken(response));
   } catch (e) {
     // Do not have enough time to enhance here pretend there is toast here
@@ -22,16 +22,16 @@ function* getRequestToken() {
 
 function* getAccessToken() {
   try {
-    const state = yield select();
-    console.log('debug here select state', state);
+    const cookies = new Cookies();
+    const requestToken = cookies.get("requestToken");
+
     const response = yield api.post(
       "https://api.themoviedb.org/4/auth/access_token",
       {
-        request_token: state.auth.requestToken
+        request_token: requestToken
       }
     );
-    //const products = response.products;
-    yield put(auth.actions.receivedRequestToken(response));
+    yield put(auth.actions.receivedAccessToken(response));
   } catch (e) {
     // Do not have enough time to enhance here pretend there is toast here
     console.log("debug here error: ", e);

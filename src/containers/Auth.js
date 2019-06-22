@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   fetchingRequestToken: auth.actions.fetchingRequestToken,
+  approveRequestToken: auth.actions.approveRequestToken,
   fetchingAccessToken: auth.actions.fetchingAccessToken
 };
 
