@@ -12,8 +12,8 @@ class ApproveView extends React.Component {
   render() {
     return (
       <div>
-        <p>Approved visit following link: 
-          <Link to="/list">My Watch List</Link>
+        <p>Approved visit following link:
+          <Link to="/search">Get to My Homepage</Link>
         </p>
       </div>
     );

@@ -8,7 +8,7 @@ function* getRequestToken() {
     const response = yield api.post(
       "https://api.themoviedb.org/4/auth/request_token",
       {
-        redirect_to: config.APP_URL + '/approve/'
+        redirect_to: config.APP_URL + '/approve'
       }
     );
     yield put(auth.actions.receivedRequestToken(response));

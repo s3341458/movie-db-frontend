@@ -1,5 +1,5 @@
 import React from "react";
 
-const NotFound = () => <h2> Search </h2>
+const NotFound = () => <h2> Page Not Found </h2>
 
 export { NotFound }

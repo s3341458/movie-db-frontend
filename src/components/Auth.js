@@ -19,7 +19,7 @@ class AuthView extends React.Component {
             onClick={e => {
               this.props.fetchingRequestToken();
             }}
-          > Login in use Auth</button>
+          >Login in use Auth</button>
         )}
       </div>
     );

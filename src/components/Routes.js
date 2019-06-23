@@ -27,7 +27,7 @@ const AuthenticatedRoute = ({ component: C, props: cProps, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      cProps.requestTokenApproved ? (
+      cProps.requestToken && cProps.requestTokenApproved ? (
         <C {...props} {...cProps} />
       ) : (
         <Redirect
@@ -46,7 +46,7 @@ const UnauthenticatedRoute = ({ component: C, props: cProps, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        !cProps.requestTokenApproved ? (
+        !cProps.requestToken || !cProps.requestTokenApproved ? (
           <C {...props} {...cProps} />
         ) : (
           <Redirect
@@ -61,7 +61,7 @@ const UnauthenticatedRoute = ({ component: C, props: cProps, ...rest }) => {
 const RoutesView = props => (
   <Switch>
     <UnauthenticatedRoute exact path="/login" component={Auth} props={props}/>
-    <UnauthenticatedRoute exact path="/Approve" component={Approve} props={props}/>
+    <Route exact path="/approve" component={Approve} props={props}/>
     <AuthenticatedRoute path="/search" component={SearchPage} props={props}/>
     <AuthenticatedRoute path="/list" component={ListPage} props={props}/>
     {/* Finally, catch all unmatched routes */}
