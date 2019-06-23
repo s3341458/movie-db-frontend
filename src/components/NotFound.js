@@ -1,5 +1,8 @@
 import React from "react";
+import { WithAuth } from "../containers";
 
-const NotFound = () => <h2> Page Not Found </h2>
+
+const NotFoundView = () => <h2> Page Not Found </h2>
+const NotFound = WithAuth(NotFoundView)
 
 export { NotFound }

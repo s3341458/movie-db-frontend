@@ -65,7 +65,7 @@ const RoutesView = props => (
     <AuthenticatedRoute path="/search" component={SearchPage} props={props}/>
     <AuthenticatedRoute path="/list" component={ListPage} props={props}/>
     {/* Finally, catch all unmatched routes */}
-    <Route component={NotFound} />
+    <AuthenticatedRoute component={NotFound} props={props} />
   </Switch>
 );
 
