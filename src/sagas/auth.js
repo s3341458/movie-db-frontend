@@ -14,7 +14,7 @@ function* getRequestToken() {
     yield put(auth.actions.receivedRequestToken(response));
   } catch (e) {
     // Do not have enough time to enhance here pretend there is toast here
-    console.log("debug here error: ", e);
+    console.log("error: ", e);
   }
 }
 
@@ -31,7 +31,7 @@ function* getAccessToken() {
     yield put(auth.actions.receivedAccessToken(response));
   } catch (e) {
     // Do not have enough time to enhance here pretend there is toast here
-    console.log("debug here error: ", e);
+    console.log("error: ", e);
   }
 }
 
