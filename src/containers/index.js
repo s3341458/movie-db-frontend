@@ -1,3 +1,4 @@
 import { WithAuth } from "./Auth";
+import { WithMovies } from "./Movies";
 
-export { WithAuth };
+export { WithAuth, WithMovies };

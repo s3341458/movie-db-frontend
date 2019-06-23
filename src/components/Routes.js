@@ -27,7 +27,7 @@ const AuthenticatedRoute = ({ component: C, props: cProps, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      cProps.accessToken ? (
+      cProps.requestTokenApproved ? (
         <C {...props} {...cProps} />
       ) : (
         <Redirect
@@ -46,7 +46,7 @@ const UnauthenticatedRoute = ({ component: C, props: cProps, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        !cProps.accessToken ? (
+        !cProps.requestTokenApproved ? (
           <C {...props} {...cProps} />
         ) : (
           <Redirect

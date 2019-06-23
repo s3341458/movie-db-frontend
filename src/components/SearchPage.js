@@ -1,19 +1,20 @@
 import React from "react";
-import { WithAuth } from "../containers";
+import { WithAuth, WithMovies } from "../containers";
 
 class SearchView extends React.Component {
-  componentDidMount() {
-    this.props.fetchingAccessToken();
-  }
 
   render() {
     return (
       <div>
-        <h2>Search</h2>
+        <button
+          onClick={e => {
+            this.props.fetchingMovies();
+          }}
+        >
+          search movies
+        </button>
       </div>
     );
   }
 }
-export const SearchPage = WithAuth(SearchView);
-
-
+export const SearchPage = WithMovies(WithAuth(SearchView));

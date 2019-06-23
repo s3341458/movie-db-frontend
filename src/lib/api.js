@@ -26,10 +26,11 @@ const options = {
   }
 };
 
-const get = fetchJSON({
+const get = (url, queryParams={})  => fetchJSON({
   method: "GET",
-  ...options
-});
+  headers: {...options.headers},
+  queryParams: {...options.queryParams, ...queryParams}
+})(url);
 
 const post = (url, json) =>
   fetchJSON({

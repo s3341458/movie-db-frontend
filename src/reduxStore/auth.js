@@ -1,14 +1,12 @@
 import { createSlice } from "redux-starter-kit";
-import Cookies from "universal-cookie";
 
 const auth = createSlice({
   slice: "auth",
   initialState: {
-    accountId: null,
     isFetching: false,
     requestTokenApproved: false,
+    requestToken: null,
     accessToken: null,
-    errorMessage: "",
   },
   reducers: {
     fetchingRequestToken: state => {
@@ -23,8 +21,7 @@ const auth = createSlice({
       state.requestTokenApproved = true;
     },
     receivedRequestToken: (state, action) => {
-      const cookies = new Cookies();
-      cookies.set('requestToken', action.payload.request_token);
+      state.requestToken = action.payload.request_token;
       state.isFetching = false;
     },
     receivedAccessToken: (state, action) => {
@@ -35,4 +32,4 @@ const auth = createSlice({
   },
 });
 
-export default auth;
+export { auth };

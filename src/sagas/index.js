@@ -1,3 +1,4 @@
 import authSaga from "./auth";
+import moviesSaga from "./movies";
 
-export default [authSaga];
+export default [authSaga, moviesSaga];

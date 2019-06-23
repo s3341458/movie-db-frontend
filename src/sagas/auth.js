@@ -1,9 +1,7 @@
 import api from "../lib/api.js";
-import auth from "../reduxStore/auth.js";
+import { auth } from "../reduxStore/auth.js";
 import config from "../config.js";
-import Cookies from "universal-cookie";
-
-import { takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put, select } from "redux-saga/effects";
 
 function* getRequestToken() {
   try {
@@ -22,13 +20,12 @@ function* getRequestToken() {
 
 function* getAccessToken() {
   try {
-    const cookies = new Cookies();
-    const requestToken = cookies.get("requestToken");
 
+    const state = select();
     const response = yield api.post(
       "https://api.themoviedb.org/4/auth/access_token",
       {
-        request_token: requestToken
+        request_token: state.auth.requestToken
       }
     );
     yield put(auth.actions.receivedAccessToken(response));

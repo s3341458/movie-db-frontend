@@ -3,11 +3,7 @@ import { auth } from "../reduxStore";
 
 
 const mapStateToProps = state => {
-  return {
-    isFetching: state.auth.isFetching,
-    requestToken: state.auth.requestToken,
-    accessToken: state.auth.AccessToken,
-  };
+  return {...state.auth};
 };
 
 const mapDispatchToProps = {
