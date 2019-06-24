@@ -6,7 +6,7 @@ import { takeEvery, put, select } from "redux-saga/effects";
 function* queryMovies(action) {
   try {
     const state = yield select();
-    const page = action.payload.page ? action.payload.page + 1 : 1;
+    const page = action.payload ? action.payload.page + 1 : 1;
     const response = yield api.get(
       "https://api.themoviedb.org/3/search/movie",
       {query: state.movies.searchTerm, page});
